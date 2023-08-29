@@ -13,6 +13,7 @@ On an average, the delivery charges are Rs. 100 per shipment. So if it ships 1,0
 Input Data
 Left Hand Side (LHS) Data (X’s internal data spread across three reports)
 
+
 ● Website order report- which will list Order IDs ,various products (SKUs) part of each order and the Payment Type of the Order ( COD or Prepaid). Order ID is common identifier between X’s order report and courier company invoice.
 
 ● Warehouse pincode to All India pincode mapping -(this should be used to figure out delivery zone (a/b/c/d/e) and during analysis compare against one reported by courier company in their CSV invoice per Order ID
@@ -21,6 +22,7 @@ Left Hand Side (LHS) Data (X’s internal data spread across three reports)
 
 RHS Data (courier company invoice in CSV file)
 
+
 ● Invoice in CSV file mentioning AWB Number (courier company’s own internal ID), Order ID (company X’s order ID), weight of shipment, warehouse pickup pincode, customer delivery pincode, zone of delivery, charges per shipment, type of shipment
 
 ● Courier charges rate card at weight slab and pincode level. If the invoice mentions “Forward charges” then only forward charges (“fwd”) should be applicable as per zone and fixed & additional weights based on weight slabs. If the invoice mentions “Forward and rto charges” then forward charges (“fwd”) and RTO charges (“rto”) should be applicable as per zone and fixed & additional weights based on weight slabs.
@@ -28,4 +30,5 @@ RHS Data (courier company invoice in CSV file)
 ● For the first slab of that zone, “fixed” rate as per the slab is applicable. For each additional slab, “additional” weight in the same proportion is applicable. Total charges will be “fixed” + “total additional” if any. For example: weight 2.2KG, Zone C. So for Zone C the slab length = 0.75KG. So the total applicable weight = 2.25KG. For the first 0.75 KG the charge is “fwd”, and for each 0.75 after the first, charges will be additional charges.
 
 ● Once this is done, then you need to calculate the COD charges. For this case, if the order is Prepaid then COD charge is 0 and if the order is COD then we need to check the amount of the order If the order amount is less than equal to 300 then COD charge is 15 Else the COD charge is 5% of the Order Amount
+
 ● Total Charges = Total forward charge + Total RTO charge + COD charge.
