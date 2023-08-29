@@ -12,6 +12,7 @@ On an average, the delivery charges are Rs. 100 per shipment. So if it ships 1,0
 
 Input Data
 Left Hand Side (LHS) Data (X’s internal data spread across three reports)
+
 ● Website order report- which will list Order IDs ,various products (SKUs) part of each order and the Payment Type of the Order ( COD or Prepaid). Order ID is common identifier between X’s order report and courier company invoice.
 
 ● Warehouse pincode to All India pincode mapping -(this should be used to figure out delivery zone (a/b/c/d/e) and during analysis compare against one reported by courier company in their CSV invoice per Order ID
@@ -19,6 +20,7 @@ Left Hand Side (LHS) Data (X’s internal data spread across three reports)
 ● SKU master with gross weight of each product. This should be used to calculate total weight of each order and during analysis compare against one reported by courier company in their CSV invoice per Order ID. The courier company calculates weight in slabs that is applicable for that delivery zone, so first you have to figure out the total weight of the shipment and then figure out applicable weight (based on zone’s weight slab).
 
 RHS Data (courier company invoice in CSV file)
+
 ● Invoice in CSV file mentioning AWB Number (courier company’s own internal ID), Order ID (company X’s order ID), weight of shipment, warehouse pickup pincode, customer delivery pincode, zone of delivery, charges per shipment, type of shipment
 
 ● Courier charges rate card at weight slab and pincode level. If the invoice mentions “Forward charges” then only forward charges (“fwd”) should be applicable as per zone and fixed & additional weights based on weight slabs. If the invoice mentions “Forward and rto charges” then forward charges (“fwd”) and RTO charges (“rto”) should be applicable as per zone and fixed & additional weights based on weight slabs.
